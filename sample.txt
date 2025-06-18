@@ -1,0 +1,12 @@
+LangChain is a framework for developing applications powered by language models. It enables applications that are context-aware and reason about their responses.
+
+Key features of LangChain include:
+1. Modular Components: LangChain provides modular components that can be combined to create complex applications.
+2. Chain of Thought: It supports complex reasoning by breaking down tasks into smaller steps.
+3. Memory: LangChain includes memory components that allow for maintaining state across multiple interactions.
+4. Document Processing: It can process and analyze documents, making it useful for question-answering systems.
+5. Integration: LangChain can be integrated with various language models, including local models like Ollama.
+
+Ollama is a tool that allows you to run large language models locally. It provides a simple way to use models like qwen3:8b on your own machine. When combined with LangChain, it creates a powerful system for building AI applications that can run entirely on your local hardware.
+
+The combination of LangChain and Ollama enables developers to create sophisticated AI applications while maintaining privacy and reducing costs associated with cloud-based solutions. 
