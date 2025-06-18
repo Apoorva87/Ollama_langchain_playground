@@ -1,0 +1,16 @@
+{
+    "include": [
+        "examples",
+        "*.py"
+    ],
+    "exclude": [
+        "**/node_modules",
+        "**/__pycache__"
+    ],
+    "typeCheckingMode": "basic",
+    "useLibraryCodeForTypes": true,
+    "venvPath": ".",
+    "venv": "venv",
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false
+} 

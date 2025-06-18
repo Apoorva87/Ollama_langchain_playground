@@ -1,0 +1,20 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.indexing": true,
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "langchain",
+            "depth": 5
+        },
+        {
+            "name": "langchain_community",
+            "depth": 5
+        }
+    ],
+    "python.languageServer": "Pylance",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/venv/lib/python3.9/site-packages"
+    ]
+} 
