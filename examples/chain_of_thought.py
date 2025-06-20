@@ -2,7 +2,15 @@ from langchain_community.llms import Ollama
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
-def main():
+def run_chain_of_thought(question: str) -> str:
+    """Run a chain of thought reasoning process.
+    
+    Args:
+        question: The question to reason about
+        
+    Returns:
+        The model's reasoning and answer as a string
+    """
     # Initialize Ollama
     llm = Ollama(model="qwen3:8b")
 
@@ -24,6 +32,11 @@ Please provide your reasoning and answer:"""
     # Create the chain
     chain = LLMChain(llm=llm, prompt=prompt)
 
+    # Get response
+    response = chain.run(question)
+    return response
+
+def main():
     # Interactive reasoning loop
     print("Chain of Thought Reasoning System (type 'quit' to exit)")
     print("-" * 50)
@@ -35,7 +48,7 @@ Please provide your reasoning and answer:"""
 
         print("\nReasoning process:")
         print("-" * 30)
-        response = chain.run(question)
+        response = run_chain_of_thought(question)
         print(response)
         print("-" * 50)
 

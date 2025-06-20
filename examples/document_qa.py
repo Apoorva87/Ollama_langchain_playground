@@ -5,13 +5,22 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.document_loaders import TextLoader
 
-def main():
+def run_document_qa(doc_path: str, question: str) -> str:
+    """Run a document QA interaction with the model.
+    
+    Args:
+        doc_path: Path to the document file
+        question: The question to ask about the document
+        
+    Returns:
+        The model's answer as a string
+    """
     # Initialize Ollama
     llm = Ollama(model="qwen3:8b")
     embeddings = OllamaEmbeddings(model="qwen3:8b")
 
     # Load and process the document
-    loader = TextLoader("sample.txt")
+    loader = TextLoader(doc_path)
     documents = loader.load()
     
     # Split text into chunks
@@ -33,6 +42,11 @@ def main():
         return_source_documents=True
     )
 
+    # Get answer
+    result = qa_chain({"query": question})
+    return result["result"]
+
+def main():
     # Interactive QA loop
     print("Document QA System (type 'quit' to exit)")
     print("-" * 50)
@@ -42,12 +56,8 @@ def main():
         if question.lower() == 'quit':
             break
 
-        result = qa_chain({"query": question})
-        print("\nAnswer:", result["result"])
-        print("\nSource documents:")
-        for doc in result["source_documents"]:
-            print("-" * 30)
-            print(doc.page_content[:200] + "...")
+        result = run_document_qa("sample.txt", question)
+        print("\nAnswer:", result)
         print("-" * 50)
 
 if __name__ == "__main__":
